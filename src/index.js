@@ -4,7 +4,7 @@ import {createGrid, elements} from "./functions/grid";
 import {tetrominoes} from "./constant/tetrominos"
 import { GRID_WIDTH } from "./constant/grid";
 import { setCurrentValues } from "../currentValues";
-import { start } from "./functions/tetrominosControl";
+import { start, undraw } from "./functions/tetrominosControl";
 
 
 const gridItems=elements;
@@ -12,10 +12,11 @@ setCurrentValues("elements",gridItems);
 
 document.querySelector("#start-button").addEventListener("click",()=>{
 const startTetrisInterval=()=>{
-     start();
+     
+    start();
     };
 const timer = setInterval(startTetrisInterval,800);
-
+setCurrentValues("timer",timer);
 });
 
 /*

@@ -6,7 +6,9 @@ export const currentValues= {
     rotation  : 0, 
     tetrominoes : getRandomTetreminoe(),
     elements  : null,
-    colors: getRandomColor()
+    colors: getRandomColor(),
+    timer: null,
+    score: 0
 }
 export const setCurrentValues = (key,value) => {
 currentValues[key]=value;
