@@ -14,6 +14,7 @@ export const setCurrentValues = (key,value) => {
 currentValues[key]=value;
 }
 
+
 export const getCurrentValues=()=> {
 return currentValues;
 }
