@@ -4,13 +4,21 @@ import {createGrid, elements} from "./functions/grid";
 import {tetrominoes} from "./constant/tetrominos"
 import { GRID_WIDTH } from "./constant/grid";
 import { setCurrentValues } from "../currentValues";
-import {  start, undraw } from "./functions/tetrominosControl";
+import {  start} from "./functions/tetrominosControl";
 
+//const username=prompt("Your Name");
+
+if(window.localStorage.getItem("highestScore")){
+    document.querySelector("span").innerHTML=window.localStorage.getItem("highestScore");
+
+}else{
+    document.querySelector("span").innerHTML=0;
+}
 
 const gridItems=elements;
 setCurrentValues("elements",gridItems);
 document.querySelector("#start-button").addEventListener("click",()=>{
-
+    document.querySelector("#player").play();
     startInvertal()
 });
 

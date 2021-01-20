@@ -36,4 +36,4 @@ const iTetromino = [
 ];
 
 export const tetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
-export const colors=["#FFBF00","#DE3163","#6495ED","#2ECC71"];
+export const colors=["#FFBF00","#DE3163","#6495ED","#2ECC71","#a20a0a"];

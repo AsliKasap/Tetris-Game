@@ -3,6 +3,9 @@ import { GRID_SIZE, GRID_WIDTH } from "../constant/grid";
 import { colors, tetrominoes } from "../constant/tetrominos"
 import { elements } from "./grid";
 
+
+
+
 export const getRandomTetreminoe = ()=> { 
     const randomNum=Math.floor(Math.random() * tetrominoes.length);
     return tetrominoes[randomNum];
@@ -24,7 +27,7 @@ tetrominoes[rotation].forEach((blockIndex)=> {
 };
 
 export const undraw = ()=>{
-    const{position,rotation,tetrominoes,elements,colors}=getCurrentValues();
+    const{position,rotation,tetrominoes,elements}=getCurrentValues();
 tetrominoes[rotation].forEach((blockIndex)=> {
     elements[position + blockIndex].classList.remove("filled");
     elements[position + blockIndex].style.backgroundColor="";
@@ -58,7 +61,7 @@ if(isLast){
 }
 };
 export const checkScore=()=>{
-    const{position,tetrominoes,rotation,elements,score}=getCurrentValues();
+    const{elements,score}=getCurrentValues();
     for(let currentIndex=0;currentIndex < GRID_SIZE - 1;currentIndex+=GRID_WIDTH){
         const row=[currentIndex,currentIndex+1,currentIndex+2,currentIndex+3,currentIndex+4,currentIndex+5,currentIndex+6,currentIndex+7 , currentIndex+8 , currentIndex+9]
         const notTaken=row.some(index=>elements[index].classList.contains("taken"))
@@ -83,12 +86,13 @@ export const checkScore=()=>{
 
 
 export const checkGameOver=()=>{
-    const{position,tetrominoes,rotation,elements,timer}=getCurrentValues();
+    const{position,tetrominoes,rotation,elements,timer,score}=getCurrentValues();
     if(tetrominoes[rotation].some((index)=>{
 return elements[position+index+GRID_WIDTH].classList.contains("wall")
 
     })){
  clearInterval(timer);
+ highestScore(score);
  document.querySelector(".score").innerHTML="GAME OVER";
     }
 
@@ -101,9 +105,18 @@ export const bindEvent=()=>{
     });
     document.querySelector("#pause-button").addEventListener("click",()=>{
         const {timer} = getCurrentValues();
+        document.querySelector("#player").pause();
         clearInterval(timer);
 
-    })
+    });
+    
+    document.querySelector(".sound").addEventListener("click",()=>{
+        document.querySelector("#player").play();
+    });
+
+    document.querySelector(".mute").addEventListener("click",()=>{
+        document.querySelector("#player").pause();
+    });
 };
 
 export const moveLeft=()=>{
@@ -137,7 +150,6 @@ const isRightBorder=tetrominoes[rotation].some((index)=> (index+position)%GRID_W
 setCurrentValues("rotation", rotation+1)
 if(rotation+1 === tetrominoes.length){
     setCurrentValues("rotation",0);
-
 }
 
 if(isLeftBorder || isRightBorder){
@@ -163,3 +175,18 @@ if(e.keyCode == 40){
 
 };
 bindEvent();
+
+export const highestScore=(currentScore)=>{
+    const highestScore=window.localStorage.getItem("highestScore");
+    if(highestScore){
+    if(currentScore > highestScore){
+        window.localStorage.setItem("highestScore", currentScore);
+    }
+    
+    document.querySelector("span").innerHTML=window.localStorage.getItem("highestScore") ;
+    }else{
+        window.localStorage.setItem("highestScore", currentScore);
+        document.querySelector("span").innerHTML=currentScore;
+    
+    }
+    };
