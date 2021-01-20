@@ -4,7 +4,7 @@ import {createGrid, elements} from "./functions/grid";
 import {tetrominoes} from "./constant/tetrominos"
 import { GRID_WIDTH } from "./constant/grid";
 import { setCurrentValues } from "../currentValues";
-import {  start} from "./functions/tetrominosControl";
+import {  start,isGameOver} from "./functions/tetrominosControl";
 
 //const username=prompt("Your Name");
 
@@ -20,6 +20,9 @@ setCurrentValues("elements",gridItems);
 document.querySelector("#start-button").addEventListener("click",()=>{
     document.querySelector("#player").play();
     startInvertal()
+    if(isGameOver){
+        window.location.reload(true);
+        }
 });
 
 const startInvertal=()=>{

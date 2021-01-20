@@ -41,9 +41,10 @@ export const start = ()=>{
             undraw()
          setCurrentValues("position",position + GRID_WIDTH);
  }
-    
-    draw();
+
+    draw()
     checkShouldStop();
+    
 };
 
 export const checkShouldStop=()=>{
@@ -83,7 +84,7 @@ export const checkScore=()=>{
     }
 
 };
-
+export let isGameOver=false;
 
 export const checkGameOver=()=>{
     const{position,tetrominoes,rotation,elements,timer,score}=getCurrentValues();
@@ -94,6 +95,7 @@ return elements[position+index+GRID_WIDTH].classList.contains("wall")
  clearInterval(timer);
  highestScore(score);
  document.querySelector(".score").innerHTML="GAME OVER";
+ isGameOver=true;
     }
 
 };
