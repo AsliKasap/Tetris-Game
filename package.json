@@ -6,8 +6,8 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
-    "predeploy":"npm run build",
-    "deploy": "gh-pages -d"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/AsliKasap/Tetris-Game/issues"
   },
-  "homepage": "https://github.com/AsliKasap/Tetris-Game#readme",
+  "homepage": "https://aslikasap.github.io/Tetris-Game",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
