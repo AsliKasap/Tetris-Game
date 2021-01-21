@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/AsliKasap/Tetris-Game/issues"
   },
-  "homepage": "https://aslikasap.github.io/Tetris-Game",
+  "homapage" :"http://aslikasap.github.io/Tetris-Game/",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
@@ -36,6 +36,6 @@
   "dependencies": {
     "alertify": "^0.3.0"
   },
-  "homapage" :"http://aslikasap.github.io/Tetris-Game/"
+  
   
 }
